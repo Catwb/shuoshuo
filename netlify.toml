@@ -1,0 +1,19 @@
+[[redirects]]
+  from = "/*"
+  to = "https://api.github.com/repos/Catwb/shuoshuo/issues?state=open&&creator=Catwb"
+  status = 200
+
+[[headers]]
+  for = "/*"  # 匹配所有路径
+  [headers.values]
+    Access-Control-Allow-Origin = "*" # 允许所有，然而你也可以只设置自己的域名
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+    Access-Control-Allow-Headers = "cache-control, Content-Type, Authorization" # 按你需要的来
+    X-CORS-Config-Source = "netlify-headers"  # 自定义标识头
+
+# 单独处理 OPTIONS 请求
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Max-Age = "86400"
+  method = ["OPTIONS"]  # 仅针对OPTIONS方法
